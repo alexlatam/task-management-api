@@ -1,7 +1,6 @@
-// src/core/services/UserService.ts
 import {IUserRepository} from '../../domain/IUserRepository';
-import {User} from '../../domain/User';
-import {Address} from "../../domain/Address";
+import {User} from '../../../shared/domain/entities/User';
+import {Address} from "../../../shared/domain/entities/Address";
 import {CreateUserDto} from "./CreateUserDto";
 
 export class CreateUser {

@@ -8,4 +8,8 @@ export interface ITaskRepository {
     create(user: Omit<Task, 'id'>): Promise<Task>;
 
     delete(id: string): Promise<void>;
+
+    findAllAssignedToSpecificUser(id: string): Promise<Task[]>;
+
+    save(task: Task): Promise<void>;
 }

@@ -1,6 +1,6 @@
 // src/core/services/UserService.ts
-import {IUserRepository} from '../../domain/IUserRepository';
-import {User} from '../../domain/User';
+import {IUserRepository} from '../../../users/domain/IUserRepository';
+import {User} from '../../domain/entities/User';
 
 export class FindUser {
     constructor(private userRepository: IUserRepository) {

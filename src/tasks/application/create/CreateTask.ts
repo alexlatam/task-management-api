@@ -1,10 +1,9 @@
-// src/core/services/UserService.ts
 import {ITaskRepository} from '../../domain/ITaskRepository';
 import {Task} from '../../domain/Task';
 import {CreateTaskDto} from "./CreateTaskDto";
 
 export class CreateTask {
-    constructor(private userRepository: ITaskRepository) {
+    constructor(private taskRepository: ITaskRepository) {
     }
 
     async execute(userData: CreateTaskDto): Promise<Task> {
@@ -18,7 +17,6 @@ export class CreateTask {
             dueDate: userData.dueDate,
         });
 
-        console.log(entity);
-        return this.userRepository.create(entity);
+        return this.taskRepository.create(entity);
     }
 }

@@ -33,4 +33,9 @@ export class Task {
         this.createdAt = props.createdAt ?? new Date();
         this.updatedAt = props.updatedAt ?? new Date();
     }
+
+    assignToUser(userId: string) {
+        this.assignedTo = userId;
+        this.updatedAt = new Date();
+    }
 }

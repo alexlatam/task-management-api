@@ -14,9 +14,13 @@ router.post('/',
     body('priority', 'The priority is requeried.').notEmpty().isString().isIn(['low', 'medium', 'high']),
     body('createdBy', 'The createdBy is requeried and must be an uuid valid.').notEmpty().isString().isUUID().trim(),
     body('dueDate', 'The dueDate is requeried.').notEmpty().isISO8601().toDate(),
-
     [validations],
     taskController.createTask); // POST /task
 router.delete('/:id', taskController.deleteTask); // DELETE /task/:id
+router.post('/:id/assign',
+    body('user_id', 'The id is requeried and must be an uuid valid.').notEmpty().isString().isUUID().trim(),
+    [validations],
+    taskController.postAssignToUser); // GET /users/:id/tasks
+router.get('/:id/users', taskController.getAllAssignedToSpecificUser); // GET /users/:id/tasks
 
 export default router;

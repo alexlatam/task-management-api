@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import {CreateUser} from '../../application/create/CreateUser';
-import {FindUser} from '../../application/find/FindUser';
+import {FindUser} from '../../../shared/application/users/FindUser';
 import {FindAllUsers} from '../../application/find/FindAllUsers';
 import {UserRepository} from '../persistence/repositories/UserRepository';
 import {CreateUserDto} from "../../application/create/CreateUserDto";

@@ -1,11 +1,13 @@
 import {ITaskRepository} from '../../domain/ITaskRepository';
 import {Task} from '../../domain/Task';
 
-export class FindTask {
+export class AssignToUser {
     constructor(private taskRepository: ITaskRepository) {
     }
 
-    async execute(id: string): Promise<Task | null> {
-        return this.taskRepository.findById(id);
+    async execute(task: Task, userId: string): Promise<void> {
+        task.assignToUser(userId);
+
+        await this.taskRepository.save(task);
     }
 }

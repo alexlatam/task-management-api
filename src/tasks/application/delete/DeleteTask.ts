@@ -1,11 +1,10 @@
 import {ITaskRepository} from '../../domain/ITaskRepository';
 
 export class DeleteTask {
-    constructor(private userRepository: ITaskRepository) {
+    constructor(private taskRepository: ITaskRepository) {
     }
 
     async execute(id: string): Promise<void> {
-        console.log("IDDDDD:" + id);
-        await this.userRepository.delete(id);
+        await this.taskRepository.delete(id);
     }
 }

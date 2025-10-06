@@ -1,5 +1,5 @@
-import {User} from '../../../domain/User';
-import {Address} from '../../../domain/Address';
+import {User} from '../../../../shared/domain/entities/User';
+import {Address} from '../../../../shared/domain/entities/Address';
 import {UserOrmEntity} from '../entities/UserOrmEntity';
 
 export class UserMapper {

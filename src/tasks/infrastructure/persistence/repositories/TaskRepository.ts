@@ -12,6 +12,14 @@ export class TaskRepository implements ITaskRepository {
         this.ormRepository = AppDataSource.getRepository(TaskOrmEntity);
     }
 
+    async save(task: Task): Promise<void> {
+        return await this.ormRepository.save(TaskMapper.toEntity(task)).then(() => {});
+    }
+
+    async findAllAssignedToSpecificUser(id: string): Promise<Task[]> {
+        return await this.ormRepository.find({where: {assignedToId: id}}).then(entities => entities.map(TaskMapper.toDomain));
+    }
+
     async findAll(): Promise<Task[]> {
         return this.ormRepository.find().then(entities => entities.map(TaskMapper.toDomain));
     }

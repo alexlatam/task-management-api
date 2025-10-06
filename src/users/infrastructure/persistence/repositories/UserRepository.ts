@@ -1,5 +1,5 @@
 import {IUserRepository} from '../../../domain/IUserRepository';
-import {User} from '../../../domain/User';
+import {User} from '../../../../shared/domain/entities/User';
 import {UserOrmEntity} from '../entities/UserOrmEntity';
 import {UserMapper} from '../mappers/UserMapper';
 import {AppDataSource} from '../../../../data/database';
