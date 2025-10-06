@@ -1,0 +1,38 @@
+{
+  "name": "task-management-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc",
+    "typeorm": "typeorm-ts-node-commonjs -d src/infrastructure/persistence/database.ts",
+    "migration:generate": "npm run typeorm -- migration:generate",
+    "migration:run": "npm run typeorm -- migration:run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^24.6.2",
+    "@types/pg": "^8.15.5",
+    "node-pg-migrate": "^8.0.3",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.27"
+  }
+}

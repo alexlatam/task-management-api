@@ -1,0 +1,15 @@
+# Ignorar dependencias locales, deben ser instaladas dentro del contenedor
+node_modules
+
+# Ignorar logs
+npm-debug.log
+
+# Ignorar el directorio de build de TypeScript (se genera dentro del contenedor)
+dist
+
+# Ignorar archivos del sistema operativo y de IDEs
+.DS_Store
+.vscode/
+
+# Ignorar variables de entorno locales
+.env

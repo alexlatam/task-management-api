@@ -1,0 +1,45 @@
+# Especifica la versión de Docker Compose
+version: '3.8'
+
+# Define los servicios (contenedores) que se van a crear
+services:
+  # Servicio para la API de Node.js/Express
+  api:
+    build: . # Construye la imagen usando el Dockerfile en el directorio actual
+    restart: on-failure # <-- AÑADE ESTA LÍNEA
+    ports:
+      - "3000:3000" # Mapea el puerto 3000 del host al 3000 del contenedor
+    volumes:
+      - .:/usr/src/app # Monta el directorio actual en el contenedor para reflejar cambios en el código al instante
+      - /usr/src/app/node_modules # Evita que la carpeta node_modules local sobreescriba la del contenedor
+    environment:
+      - PORT=3000
+      - DB_HOST=db # MUY IMPORTANTE: El host de la BD es el nombre del servicio de la BD
+      - DB_USER=myuser
+      - DB_PASSWORD=mypassword
+      - DB_NAME=mydatabase
+      - DB_PORT=5432
+    depends_on:
+      db: # Le dice a Docker que inicie el servicio 'db' antes que el servicio 'api'
+        condition: service_healthy # <-- AÑADE ESTO
+
+  # Servicio para la base de datos PostgreSQL
+  db:
+    image: postgres:15-alpine # Usa una imagen oficial de PostgreSQL
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydatabase
+    ports:
+      - "5433:5432" # Mapea el puerto 5433 del host al 5432 del contenedor (para conectarte desde tu PC si lo necesitas)
+    volumes:
+      - postgres-data:/var/lib/postgresql/data # Persiste los datos de la base de datos
+    healthcheck: # <-- AÑADE TODA ESTA SECCIÓN
+      test: [ "CMD-SHELL", "pg_isready -U myuser -d mydatabase" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+# Define los volúmenes para la persistencia de datos
+volumes:
+  postgres-data:
