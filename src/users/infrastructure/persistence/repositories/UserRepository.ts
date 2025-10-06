@@ -1,8 +1,8 @@
-import {IUserRepository} from '../../../api/core/interfaces/IUserRepository';
-import {User} from '../../../api/core/domain/User';
+import {IUserRepository} from '../../../domain/IUserRepository';
+import {User} from '../../../domain/User';
 import {UserOrmEntity} from '../entities/UserOrmEntity';
 import {UserMapper} from '../mappers/UserMapper';
-import {AppDataSource} from '../database';
+import {AppDataSource} from '../../../../data/database';
 import {Repository} from 'typeorm';
 
 export class UserRepository implements IUserRepository {

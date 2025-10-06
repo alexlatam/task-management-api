@@ -4,11 +4,11 @@ import {User} from '../../domain/User';
 import {Address} from "../../domain/Address";
 import {CreateUserDto} from "./CreateUserDto";
 
-export class UserService {
+export class CreateUser {
     constructor(private userRepository: IUserRepository) {
     }
 
-    async createUser(userData: CreateUserDto): Promise<User> {
+    async execute(userData: CreateUserDto): Promise<User> {
         const address = new Address({
             addressLine1: userData.address.addressLine1,
             addressLine2: userData.address.addressLine2,

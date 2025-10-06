@@ -2,11 +2,11 @@
 import {IUserRepository} from '../../domain/IUserRepository';
 import {User} from '../../domain/User';
 
-export class FindUser {
+export class FindAllUsers {
     constructor(private userRepository: IUserRepository) {
     }
 
-    async execute(id: string): Promise<User | null> {
-        return this.userRepository.findById(id);
+    async execute(): Promise<User[]> {
+      return this.userRepository.findAll();
     }
 }

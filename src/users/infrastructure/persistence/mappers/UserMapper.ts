@@ -1,5 +1,5 @@
-import {User} from '../../../api/core/domain/User';
-import {Address} from '../../../api/core/domain/Address';
+import {User} from '../../../domain/User';
+import {Address} from '../../../domain/Address';
 import {UserOrmEntity} from '../entities/UserOrmEntity';
 
 export class UserMapper {

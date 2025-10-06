@@ -1,4 +1,4 @@
-import { User } from '../domain/User';
+import { User } from './User';
 
 export interface IUserRepository {
   findAll(): Promise<User[]>;

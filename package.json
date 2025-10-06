@@ -7,7 +7,7 @@
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts",
     "build": "tsc",
-    "typeorm": "typeorm-ts-node-commonjs -d src/infrastructure/persistence/database.ts",
+    "typeorm": "typeorm-ts-node-commonjs -d src/data/database.ts",
     "migration:generate": "npm run typeorm -- migration:generate",
     "migration:run": "npm run typeorm -- migration:run"
   },
