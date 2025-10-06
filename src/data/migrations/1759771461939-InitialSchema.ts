@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class CreateUserTable1759743663075 implements MigrationInterface {
-    name = 'CreateUserTable1759743663075'
+export class InitialSchema1759771461939 implements MigrationInterface {
+    name = 'InitialSchema1759771461939'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TYPE "public"."users_role_enum" AS ENUM('admin', 'user')`);
