@@ -15,9 +15,9 @@ services:
     environment:
       - PORT=3000
       - DB_HOST=db # MUY IMPORTANTE: El host de la BD es el nombre del servicio de la BD
-      - DB_USER=myuser
-      - DB_PASSWORD=mypassword
-      - DB_NAME=mydatabase
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
       - DB_PORT=5432
     depends_on:
       db: # Le dice a Docker que inicie el servicio 'db' antes que el servicio 'api'
@@ -27,15 +27,15 @@ services:
   db:
     image: postgres:15-alpine # Usa una imagen oficial de PostgreSQL
     environment:
-      - POSTGRES_USER=myuser
-      - POSTGRES_PASSWORD=mypassword
-      - POSTGRES_DB=mydatabase
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
     ports:
       - "5433:5432" # Mapea el puerto 5433 del host al 5432 del contenedor (para conectarte desde tu PC si lo necesitas)
     volumes:
       - postgres-data:/var/lib/postgresql/data # Persiste los datos de la base de datos
     healthcheck: # <-- AÑADE TODA ESTA SECCIÓN
-      test: [ "CMD-SHELL", "pg_isready -U myuser -d mydatabase" ]
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
       interval: 5s
       timeout: 5s
       retries: 5
